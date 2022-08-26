@@ -40,7 +40,7 @@ const init = async () => {
         options: {
             cache: {
                 expiresIn: 30 * 1000,
-                privacy: 'private'
+                privacy: 'public'
             }
         }
     },
@@ -55,8 +55,8 @@ const init = async () => {
         },
         options: {
             cache: {
-                expiresIn: 360000000,
-                privacy: 'private'
+                expiresIn: 10 * 1000,
+                privacy: 'public'
             }
         }
     }]);
