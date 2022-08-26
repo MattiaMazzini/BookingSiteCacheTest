@@ -1,7 +1,6 @@
 {
   "name": "bookingsitecachetest",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,15 @@
   "dependencies": {
     "@hapi/hapi": "^20.2.2",
     "@hapi/inert": "^7.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattiaMazzini/BookingSiteCacheTest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MattiaMazzini/BookingSiteCacheTest/issues"
+  },
+  "homepage": "https://github.com/MattiaMazzini/BookingSiteCacheTest#readme",
+  "description": ""
 }
