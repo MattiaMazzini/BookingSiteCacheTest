@@ -2,6 +2,8 @@
 
 const Hapi = require('@hapi/hapi');
 const { response } = require('@hapi/hapi/lib/validation');
+const CatboxRedis = require('@hapi/catbox-redis');
+const Hoek = require('@hapi/hoek');
 
 const init = async () => {
 
@@ -10,8 +12,40 @@ const init = async () => {
 
     const server = Hapi.server({
         port: 3000,
-        host: 'localhost'
+        host: 'localhost',
+        cache: [
+            {
+                name: 'my_cache',
+                provider: {
+                    constructor: CatboxRedis,
+                    options: {
+                        partition : 'my_cached_data',
+                    }
+                }
+            }
+        ]
     });
+
+    //Funzione somma del server che useremo per testare se il caching funziona correttamente
+    const add = async (a , b) => {
+        await Hoek.wait(1000);
+
+        return await Number(a) + Number(b);
+    };
+
+    
+    const sumCache = server.cache({
+        cache: 'my_cache',
+        expiresIn: 10 * 1000,
+        segment: 'customSegment',
+        generateFunc: async (id) => {
+
+            return await add(id.a, id.b);
+        },
+        generateTimeout: 2000
+    });
+
+
 
     await server.register(require('@hapi/inert'));
 
@@ -87,6 +121,17 @@ const init = async () => {
                 expiresIn: 10 * 1000,
                 privacy: 'public'
             }
+        }
+    },
+    {
+        path: '/add/{a}/{b}',
+        method: 'GET',
+        handler: async function (request, h) {
+
+            const { a, b } = request.params;
+            const id = `${a}:${b}`;
+
+            return await sumCache.get({ id, a, b });
         }
     }]);
 

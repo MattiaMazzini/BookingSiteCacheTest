@@ -11,6 +11,7 @@
   "dependencies": {
     "@hapi/catbox-redis": "^6.0.2",
     "@hapi/hapi": "^20.2.2",
+    "@hapi/hoek": "^10.0.1",
     "@hapi/inert": "^7.0.0",
     "redis": "^4.3.0"
   },
@@ -22,6 +23,5 @@
     "url": "https://github.com/MattiaMazzini/BookingSiteCacheTest/issues"
   },
   "homepage": "https://github.com/MattiaMazzini/BookingSiteCacheTest#readme",
-  "devDependencies": {},
   "description": ""
 }
