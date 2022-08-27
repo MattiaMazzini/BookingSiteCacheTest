@@ -9,10 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/catbox-redis": "^6.0.2",
     "@hapi/hapi": "^20.2.2",
-    "@hapi/inert": "^7.0.0"
+    "@hapi/inert": "^7.0.0",
+    "redis": "^4.3.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MattiaMazzini/BookingSiteCacheTest.git"
@@ -21,5 +22,6 @@
     "url": "https://github.com/MattiaMazzini/BookingSiteCacheTest/issues"
   },
   "homepage": "https://github.com/MattiaMazzini/BookingSiteCacheTest#readme",
+  "devDependencies": {},
   "description": ""
 }
